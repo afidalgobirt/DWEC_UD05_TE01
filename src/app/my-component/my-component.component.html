@@ -1,0 +1,34 @@
+<header>
+  <h1>Juego de Adivinaci&oacute;n de N&uacute;meros Aleatorios - DWEC05</h1>
+  <hr>
+</header>
+<div class="wrapper">
+  <section id="game-configuration-wrapper">
+    <h2>Par&aacute;metros de Configuraci&oacute;n del Juego</h2>
+    <div class="form-wrapper">
+      <label>Nombre</label>
+      <input type="text" [(ngModel)]="newGameConfig.name"/>
+      <label>Apellido</label>
+      <input type="text" [(ngModel)]="newGameConfig.surname"/>
+      <label>Rango de n&aacute;meros a generar</label>
+      <input type="number" [(ngModel)]="newGameConfig.rangeTopLimit"/>
+      <label>N&uacute;mero de intentos</label>
+      <input type="number" [(ngModel)]="newGameConfig.maxNumberOfAttempts"/>
+      <button (click)="setSettings()">Recoger Datos</button>
+    </div>
+  </section>
+  <section id="game-wrapper">
+    <h2>Ongi etorri {{ gameConfig.name }} {{ gameConfig.surname }}</h2>
+    <div class="form-wrapper">
+      <label>Introduce el N&uacute;mero a Adivinar</label>
+      <input type="number" [(ngModel)]="currentAttempt"/>
+      <span>Intentos restantes: {{ remainingAttempts }}</span>
+      <span>¿Has adivinado?: {{ feedback }}</span>
+      <button (click)="attemptGuess()">Enviar</button>
+      <span *ngIf="isGameFinished">Intentos realizados:</span>
+      <ul *ngIf="isGameFinished">
+        <li *ngFor="let attempt of attemptedNumbers">{{ attempt }}</li>
+      </ul>
+    </div>
+  </section>
+</div>
